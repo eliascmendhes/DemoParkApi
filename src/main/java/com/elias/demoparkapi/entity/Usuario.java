@@ -57,4 +57,6 @@ public class Usuario implements Serializable {
                 "id=" + id +
                 '}';
     }
+
+
 }
