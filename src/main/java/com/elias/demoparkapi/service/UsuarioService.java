@@ -2,7 +2,8 @@ package com.elias.demoparkapi.service;
 
 import com.elias.demoparkapi.entity.Usuario;
 import com.elias.demoparkapi.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
@@ -16,4 +17,11 @@ public class UsuarioService {
 
 
     }
+    @Transactional(readOnly = true)
+    public Usuario busarPorId(Long id) {
+        return usuarioRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Usuário não encontrado.")
+        );
+    }
+
 }
